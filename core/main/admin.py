@@ -1,0 +1,20 @@
+from django.contrib import admin
+from .models import *
+
+admin.site.register(HomeCarusel1)
+admin.site.register(HomeCarusel2)
+admin.site.register(HomeCarusel3)
+admin.site.register(AboutUs)
+admin.site.register(Service)
+admin.site.register(Value)
+admin.site.register(ValueCategory)
+admin.site.register(ValueCategorySubcategory)
+admin.site.register(YourNeed)
+admin.site.register(Fact)
+admin.site.register(Specialist)
+admin.site.register(Skill1)
+admin.site.register(Skill2)
+admin.site.register(ServiceAvatar)
+admin.site.register(ProjectTitle)
+admin.site.register(ProjectCategory)
+admin.site.register(ProjectCategorySubcategory)
