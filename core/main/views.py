@@ -22,6 +22,23 @@ class HomeListView(ListView):
         serviceavatar = ServiceAvatar.objects.all()
         projecttitle = ProjectTitle.objects.all()
         projectcategory = ProjectCategory.objects.all()
+        testimonialtitle = TestimonialTitle.objects.all()
+        testimonial = Testimonial.objects.all()
+        happyclienttitle = HappyClientTitle.objects.all()
+        client = Client.objects.all() 
+        newsletter = NewsLetter.objects.all()
+        projecttitle2 = ProjectTitle2.objects.all()
+        project2 = Project2.objects.all()
+        viewallprojectbutton = ViewAllProjectButton.objects.all()
+        seeallpostbutton = SeeAllPostButton.objects.all()
+        addres = Addres.objects.all()
+        headerlogo = HeaderLogo.objects.all()
+        headercontact = HeaderContact.objects.all()
+        headergetaquotebutton = HeaderGetAQuoteButton.objects.all()
+        footeraboutUs = FooterAboutUs.objects.all()
+        footerworkinghour = FooterWorkingHour.objects.all()
+        footerservice = FooterService.objects.all()
+        footernavigation = FooterNavigation.objects.all()
         return render(request, self.template_name, {
             'homecarusel1': homecarusel1,
             'homecarusel2': homecarusel2, 
@@ -37,7 +54,24 @@ class HomeListView(ListView):
             'skill2': skill2,
             'serviceavatar': serviceavatar,
             'projecttitle': projecttitle,
-            'projectcategory': projectcategory})
+            'projectcategory': projectcategory,
+            'testimonial': testimonial,
+            'testimonialtitle': testimonialtitle,
+            'happyclienttitle': happyclienttitle,
+            'client': client,
+            'newsletter': newsletter,
+            'projecttitle2': projecttitle2,
+            'project2': project2,
+            'viewallprojectbutton': viewallprojectbutton,
+            'seeallpostbutton': seeallpostbutton,
+            'addres': addres,
+            'headerlogo': headerlogo,
+            'headercontact': headercontact,
+            'headergetaquotebutton': headergetaquotebutton,
+            'footeraboutUs': footeraboutUs,
+            'footerworkinghour': footerworkinghour,
+            'footerservice': footerservice,
+            'footernavigation': footernavigation})
 
 class HomeValueSubCatDetailView(DetailView):
     template_name = 'index.html'
@@ -46,10 +80,17 @@ class HomeValueSubCatDetailView(DetailView):
         valuecategorysubcategory = ValueCategorySubcategory.objects.get(pk=id)
         return render(request, self.template_name, {'valuecategorysubcategory': valuecategorysubcategory})
 
-
 class HomeProjectCategorySubCatDetailView(DetailView):
     template_name = 'index.html'
 
     def get(self, request, id):
         projectcategorysubcategory = ProjectCategorySubcategory.objects.get(pl=id)
         return render(request, self.template_name, {'projectcategorysubcategory': projectcategorysubcategory})
+
+
+class AboutListView(ListView):
+    template_name = 'about.html'
+
+    def get(self, request):
+        aboutbg = AboutBG.objects.all()
+        return render(request, self.template_name, {'aboutbg': aboutbg})

@@ -1,3 +1,7 @@
+from distutils.command.upload import upload
+from itertools import chain
+from statistics import mode
+from tabnanny import verbose
 from django.db import models
 
 class HomeCarusel1(models.Model):
@@ -195,3 +199,204 @@ class ProjectCategorySubcategory(models.Model):
     class Meta:
         verbose_name = 'ProjectCategorySubcategory'
         verbose_name_plural = 'ProjectCategorySubcategories'
+
+class TestimonialTitle(models.Model):
+    name = models.CharField('Testimonials name1', max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'TestimonialTitle'
+        verbose_name_plural = 'TestimonialTitles'
+
+class Testimonial(models.Model):
+    name2 = models.CharField('Testimonials name2', max_length=50)
+    name3 = models.CharField('Testimonials name3', max_length=50)
+    about = models.TextField('Testimonial about')
+    img = models.ImageField('Testimonial image', upload_to='media')
+
+    def __str__(self):
+        return self.name2
+
+    class Meta:
+        verbose_name = 'Testimonial'
+        verbose_name_plural = 'Testimonials'
+
+class HappyClientTitle(models.Model):
+    title = models.CharField('HappyClientTitle title', max_length=50)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'HappyClientTitle'
+        verbose_name_plural = 'HappyClientTitles'
+
+class Client(models.Model):
+    img = models.ImageField('Client image', upload_to='media')
+
+    def __str__(self):
+        return 'Client image'
+
+    class Meta:
+        verbose_name = 'Client'
+        verbose_name_plural = 'Clients'
+
+class NewsLetter(models.Model):
+    name1 = models.CharField('NewsLetter name1', max_length=50)
+    name2 = models.CharField('NewsLetter name2', max_length=50)
+    name3 = models.CharField('NewsLetter name3', max_length=50)
+    name4 = models.CharField('NewsLetter name4', max_length=50)
+
+    def __str__(self):
+        return 'NewsLetter content'
+
+    class Meta:
+        verbose_name = 'NewsLetter'
+        verbose_name_plural = 'NewsLetters'
+
+class ProjectTitle2(models.Model):
+    title1 = models.CharField('ProjectTitle2 title1', max_length=50)
+    title2 = models.CharField('ProjectTitle2 title2', max_length=50)
+
+    def __str__(self):
+        return self.title1
+
+    class Meta:
+        verbose_name = 'ProjectTitle2'
+        verbose_name_plural = 'ProjectTitles2'
+
+class Project2(models.Model):
+    date = models.CharField('Project2 date', max_length=50)
+    about = models.TextField('Project2 about')
+    img = models.ImageField('Project2 image', upload_to='media')
+
+    def __str__(self):
+        return 'Project2 content'
+
+    class Meta:
+        verbose_name = 'Project2'
+        verbose_name_plural = 'Projects2'
+
+class ViewAllProjectButton(models.Model):
+    name = models.CharField('ViewAllProjectButton name', max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'ViewAllProjectButton'
+        verbose_name_plural = 'ViewAllProjectButtons'
+
+class SeeAllPostButton(models.Model):
+    name = models.CharField('SeeAllPostButton name', max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'SeeAllPostButton'
+        verbose_name_plural = 'SeeAllPostButtons'
+
+class Addres(models.Model):
+    name = models.CharField('Addres name', max_length=75)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Addres'
+        verbose_name_plural = 'Addreses'
+
+class HeaderLogo(models.Model):
+    name1 = models.CharField('Contact name1', max_length=75, blank=True)
+    img = models.ImageField('Contact image', upload_to='media', blank=True)
+
+    def __str__(self):
+        return self.name1
+
+    class Meta:
+        verbose_name = 'HeaderLogo'
+        verbose_name_plural = 'HeaderLogos'
+
+class HeaderContact(models.Model):
+    name1 = models.CharField('Contact name1', max_length=50)
+    name2 = models.CharField('Contact name2', max_length=75)
+
+    def __str__(self):
+        return self.name1
+
+    class Meta:
+        verbose_name = 'HeaderContact'
+        verbose_name_plural = 'HeaderContacts'
+
+class HeaderGetAQuoteButton(models.Model):
+    name = models.CharField('HeaderGetAQuoteButton name', max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'HeaderGetAQuoteButton'
+        verbose_name_plural = 'HeaderGetAQuoteButtons'
+
+class FooterAboutUs(models.Model):
+    name = models.CharField('FooterAboutUs name', max_length=50)
+    about = models.TextField('FooterAboutUs about')
+    img = models.ImageField('FooterAboutUs image', upload_to='media')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'FooterAboutUs'
+        verbose_name_plural = 'FooterAboutUses'
+
+class FooterWorkingHour(models.Model):
+    name = models.CharField('FooterWorkingHour name', max_length=50, blank=True)
+    day = models.CharField('FooterWorkingHour day', max_length=75)
+    hour = models.CharField('FooterWorkingHour hour', max_length=50)
+    about = models.TextField('FooterWorkingHour about', blank=True)
+
+    def __str__(self):
+        return 'Working Hours'
+
+    class Meta:
+        verbose_name = 'FooterWorkingHour'
+        verbose_name_plural = 'FooterWorkingHours'
+
+class FooterService(models.Model):
+    name = models.CharField('FooterService name', max_length=50, blank=True)
+    service = models.CharField('FooterService service', max_length=75)
+
+    def __str__(self):
+        return self.service
+
+    class Meta:
+        verbose_name = 'FooterService'
+        verbose_name_plural = 'FooterServices'
+
+class FooterNavigation(models.Model):
+    name = models.CharField('FooterNavigation name', max_length=50)
+    href = models.CharField('FooterNavigation href', max_length=30)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'FooterNavigation'
+        verbose_name_plural = 'FooterNavigations'
+
+class AboutBG(models.Model):
+    name1 = models.CharField('AboutBG name1', max_length=50)
+    name2 = models.CharField('AboutBG name2', max_length=50)
+    name3 = models.CharField('AboutBG name3', max_length=50)
+    img = models.ImageField('AboutBG image', upload_to='media')
+
+    def __str__(self):
+        return self.name1
+
+    class Meta:
+        verbose_name = 'AboutBG'
+        verbose_name_plural = 'AboutBGs'
