@@ -142,7 +142,7 @@
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Company <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="{% url 'about' %}">About Us</a></li>
-                            <li><a href="team.html">Our People</a></li>
+                            <li><a href="{% url 'team' %}">Our People</a></li>
                             <li><a href="testimonials.html">Testimonials</a></li>
                             <li><a href="faq.html">Faq</a></li>
                             <li><a href="pricing.html">Pricing</a></li>
@@ -219,7 +219,7 @@
 
 {% block content %}{% endblock %}
 {% block about_content %}{% endblock %}
-
+{% block team_content %}{% endblock %}
 
 <footer id="footer" class="footer bg-overlay">
     <div class="footer-main">
@@ -284,7 +284,7 @@
           <div class="col-md-6">
             <div class="footer-menu text-center text-md-right">
               <ul class="list-unstyled">
-                <li><a href="about.html">About</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="team.html">Our people</a></li>
                 <li><a href="faq.html">Faq</a></li>
                 <li><a href="news-left-sidebar.html">Blog</a></li>

@@ -389,14 +389,108 @@ class FooterNavigation(models.Model):
         verbose_name_plural = 'FooterNavigations'
 
 class AboutBG(models.Model):
-    name1 = models.CharField('AboutBG name1', max_length=50)
+    name1 = models.CharField('AboutBG name1', max_length=50, blank=True)
     name2 = models.CharField('AboutBG name2', max_length=50)
-    name3 = models.CharField('AboutBG name3', max_length=50)
-    img = models.ImageField('AboutBG image', upload_to='media')
+    img = models.ImageField('AboutBG image', upload_to='media', blank=True, null=True)
+
+    def __str__(self):
+        return self.name2
+
+    class Meta:
+        verbose_name = 'AboutBG'
+        verbose_name_plural = 'AboutBGs'
+
+class AboutWhoWeAre(models.Model):
+    title = models.CharField('AboutWhoWeAre title', max_length=50, blank=True)
+    about1 = models.TextField('AboutWhoWeAre about1')
+    about2 = models.TextField('AboutWhoWeAre about2')
+    about3 = models.TextField('AboutWhoWeAre about3')
+
+    def __str__(self):
+        return 'About who we are'
+
+    class Meta:
+        verbose_name = 'AboutWhoWeAre'
+        verbose_name_plural = 'AboutWhoWeAres'
+
+class AboutPageSlider(models.Model):
+    title = models.CharField('AboutPageSlider title', max_length=50)
+    img = models.ImageField('AboutPageSlider image', upload_to='media')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'AboutPageSlider'
+        verbose_name_plural = 'AboutPageSliders'
+
+class AboutFact(models.Model):
+    num = models.IntegerField('Fact num')
+    name = models.CharField('Fact name', max_length=75)
+    img = models.ImageField('Fact image', upload_to='media')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'AboutFact'
+        verbose_name_plural = 'AboutFacts'
+
+class AboutTeamTitle(models.Model):
+    title = models.CharField('AboutTeamTitle title', max_length=50)
+    name = models.CharField('AboutTeamTitle name', max_length=50)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'AboutTeamTitle'
+        verbose_name_plural = 'AboutTeamTitles'
+
+class AboutTeam(models.Model):
+    name1 = models.CharField('AboutTeam name1', max_length=50)
+    name2 = models.CharField('AboutTeam name2', max_length=50)
+    about = models.TextField('AboutTeam about')
+    img = models.ImageField('AboutTeam image', upload_to='media')
 
     def __str__(self):
         return self.name1
 
     class Meta:
-        verbose_name = 'AboutBG'
-        verbose_name_plural = 'AboutBGs'
+        verbose_name = 'AboutTeam'
+        verbose_name_plural = 'AboutTeams'
+
+class TeamBG(models.Model):
+    name1 = models.CharField('TeamBG name1', max_length=50, blank=True)
+    name2 = models.CharField('TeamBG name2', max_length=50)
+    img = models.ImageField('TeamBG image', upload_to='media', blank=True, null=True)
+
+    def __str__(self):
+        return self.name2
+
+    class Meta:
+        verbose_name = 'TeamBG'
+        verbose_name_plural = 'TeamBGs'
+
+class TeamTitle(models.Model):
+    title = models.CharField('TeamTitle title', max_length=50)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'TeamTitle'
+        verbose_name_plural = 'TeamTitles'
+
+class TeamTeam(models.Model):
+    name1 = models.CharField('AboutTeam name1', max_length=50)
+    name2 = models.CharField('AboutTeam name2', max_length=50)
+    about = models.TextField('AboutTeam about')
+    img = models.ImageField('AboutTeam image', upload_to='media')
+
+    def __str__(self):
+        return self.name1
+
+    class Meta:
+        verbose_name = 'TeamTeam'
+        verbose_name_plural = 'TeamTeams'

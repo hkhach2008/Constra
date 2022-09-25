@@ -93,4 +93,29 @@ class AboutListView(ListView):
 
     def get(self, request):
         aboutbg = AboutBG.objects.all()
-        return render(request, self.template_name, {'aboutbg': aboutbg})
+        aboutwhoweare = AboutWhoWeAre.objects.all() 
+        aboutpageslider = AboutPageSlider.objects.all()
+        aboutfact = AboutFact.objects.all()
+        aboutteamtitle = AboutTeamTitle.objects.all()
+        aboutteam = AboutTeam.objects.all()
+        return render(request, self.template_name, {
+            'aboutbg': aboutbg,
+            'aboutwhoweare': aboutwhoweare,
+            'aboutpageslider': aboutpageslider,
+            'aboutfact': aboutfact,
+            'aboutteamtitle': aboutteamtitle,
+            'aboutteam': aboutteam})
+
+        
+class TeamListView(ListView):
+    template_name = 'team.html'
+
+    def get(self, request):
+        teambg = TeamBG.objects.all()
+        teamtitle = TeamTitle.objects.all()
+        teamteam = TeamTeam.objects.all()
+        return render(request, self.template_name, {
+            'teambg': teambg,
+            'teamtitle': teamtitle,
+            'teamteam': teamteam})
+        
