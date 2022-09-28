@@ -1,7 +1,9 @@
+from audioop import maxpp
 from distutils.command.upload import upload
 from itertools import chain
 from statistics import mode
 from tabnanny import verbose
+from unittest.util import _MAX_LENGTH
 from django.db import models
 
 class HomeCarusel1(models.Model):
@@ -494,3 +496,104 @@ class TeamTeam(models.Model):
     class Meta:
         verbose_name = 'TeamTeam'
         verbose_name_plural = 'TeamTeams'
+
+class TestimonialBG(models.Model):
+    name1 = models.CharField('TestimonialsBG name1', max_length=50, blank=True)
+    name2 = models.CharField('TestimonialsBG name2', max_length=50)
+    img = models.ImageField('TestimonialsBG image', upload_to='media', blank=True, null=True)
+
+    def __str__(self):
+        return self.name2
+
+    class Meta:
+        verbose_name = 'TestimonialsBG'
+        verbose_name_plural = 'TestimonialBGs'
+
+class TestimonialQuoteTitle(models.Model):
+    title = models.CharField('TestimonialTitle title', max_length=50)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'TestimonialQuoteTitle'
+        verbose_name_plural = 'TestimonialQuoteTitles'
+
+class TestimonialQuote(models.Model):
+    name1 = models.CharField('TestimonialQuote name1', max_length=50)
+    name2 = models.CharField('TestimonialQuote name2', max_length=75)
+    about = models.TextField('TestimonialQuote about')
+    img = models.ImageField('TestimonialQuote image', upload_to='media')
+
+    def __str__(self):
+        return self.name1
+
+    class Meta:
+        verbose_name = 'TestimonialQuote'
+        verbose_name_plural = 'TestimonialQuotes'
+
+
+class FaqBG(models.Model):
+    name1 = models.CharField('FaqBG name1', max_length=50, blank=True)
+    name2 = models.CharField('FaqBG name2', max_length=50)
+    img = models.ImageField('FaqBG image', upload_to='media', blank=True, null=True)
+
+    def __str__(self):
+        return self.name2
+
+    class Meta:
+        verbose_name = 'FaqBG'
+        verbose_name_plural = 'FaqBGs'
+
+class FaqCatTitle1(models.Model):
+    title = models.CharField('FaqCatTitle title1', max_length=75)
+
+    def __str__(self):
+        return 'Faq Category Titles1'
+
+    class Meta:
+        verbose_name = 'FaqCatTitle1'
+        verbose_name_plural = 'FaqCatTitles1'
+
+class FaqCatTitle2(models.Model):
+    title = models.CharField('FaqCatTitle title2', max_length=75)
+
+    def __str__(self):
+        return 'Faq Category Titles2'
+
+    class Meta:
+        verbose_name = 'FaqCatTitle2'
+        verbose_name_plural = 'FaqCatTitles2'
+
+class FaqCat(models.Model):
+    name = models.CharField('FaqCat name', max_length=175)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'FaqCat'
+        verbose_name_plural = 'FaqCats'    
+
+class FaqCatSubcat1(models.Model):
+    faqcat = models.ForeignKey(FaqCat, related_name = 'subcat1', on_delete=models.CASCADE)
+    about = models.TextField('FaqCatSubcat1')
+
+    def __str__(self):
+        return 'Faq Subcategory1 about'
+
+    class Meta:
+        verbose_name = 'FaqCatSubcat1'
+        verbose_name_plural = 'FaqCatSubcats1'
+
+
+class FaqCatSubcat2(models.Model):
+    faqcat = models.ForeignKey(FaqCat, related_name = 'subcat2', on_delete=models.CASCADE)
+    about = models.TextField('FaqCatSubcat1')
+
+    def __str__(self):
+        return 'Faq Subcategory2 about'
+
+    class Meta:
+        verbose_name = 'FaqCatSubcat2'
+        verbose_name_plural = 'FaqCatSubcats2'

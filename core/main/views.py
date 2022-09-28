@@ -119,3 +119,44 @@ class TeamListView(ListView):
             'teamtitle': teamtitle,
             'teamteam': teamteam})
         
+
+class TestimonialsListView(ListView):
+    template_name = 'testimonials.html'
+
+    def get(self, request):
+        testimonialbg = TestimonialBG.objects.all()
+        testimonialquotetitle = TestimonialQuoteTitle.objects.all()
+        testimonialquote = TestimonialQuote.objects.all()
+        return render(request, self.template_name, {
+            'testimonialbg': testimonialbg,
+            'testimonialquotetitle': testimonialquotetitle,
+            'testimonialquote': testimonialquote})
+
+
+class FaqListView(ListView):
+    template_name = 'faq.html'
+
+    def get(self, request):
+        faqbg = FaqBG.objects.all()
+        faqcattitle1 = FaqCatTitle1.objects.all()
+        faqcattitle2 = FaqCatTitle2.objects.all()
+        faqcat = FaqCat.objects.all()
+        return render(request, self.template_name, {
+            'faqbg': faqbg,
+            'faqcattitle1': faqcattitle1,
+            'faqcattitle2': faqcattitle2,
+            'faqcat': faqcat})
+
+class FaqSubcatDetailView1(DetailView):
+    template_name = 'faq.html'
+
+    def get(self, request, id):
+        faqcatsubcat1 = FaqCatSubcat1.objects.get(pk=id)
+        return render(request, self.template_name, {'faqcatsubcat1': faqcatsubcat1})
+
+class FaqSubcatDetailView2(DetailView):
+    template_name = 'faq.html'
+
+    def get(self, request, id):
+        faqcatsubcat2 = FaqCatSubcat2.objects.get(pk=id)
+        return render(request, self.template_name, {'faqcatsubcat2': faqcatsubcat2})

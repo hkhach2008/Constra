@@ -143,8 +143,8 @@
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="{% url 'about' %}">About Us</a></li>
                             <li><a href="{% url 'team' %}">Our People</a></li>
-                            <li><a href="testimonials.html">Testimonials</a></li>
-                            <li><a href="faq.html">Faq</a></li>
+                            <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+                            <li><a href="{% url 'faq' %}">Faq</a></li>
                             <li><a href="pricing.html">Pricing</a></li>
                           </ul>
                       </li>
@@ -220,6 +220,8 @@
 {% block content %}{% endblock %}
 {% block about_content %}{% endblock %}
 {% block team_content %}{% endblock %}
+{% block testimonial_content %}{% endblock %}
+{% block faq_content %}{% endblock %}
 
 <footer id="footer" class="footer bg-overlay">
     <div class="footer-main">
