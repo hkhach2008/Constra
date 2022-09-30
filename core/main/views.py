@@ -140,12 +140,18 @@ class FaqListView(ListView):
         faqbg = FaqBG.objects.all()
         faqcattitle1 = FaqCatTitle1.objects.all()
         faqcattitle2 = FaqCatTitle2.objects.all()
-        faqcat = FaqCat.objects.all()
+        faqcat1 = FaqCat1.objects.all()
+        faqcat2 = FaqCat2.objects.all()
+        faqposttitle = FaqPostTitle.objects.all()
+        faqpost = FaqPost.objects.all()
         return render(request, self.template_name, {
             'faqbg': faqbg,
             'faqcattitle1': faqcattitle1,
             'faqcattitle2': faqcattitle2,
-            'faqcat': faqcat})
+            'faqcat1': faqcat1,
+            'faqcat2': faqcat2,
+            'faqposttitle': faqposttitle,
+            'faqpost': faqpost})
 
 class FaqSubcatDetailView1(DetailView):
     template_name = 'faq.html'
@@ -160,3 +166,17 @@ class FaqSubcatDetailView2(DetailView):
     def get(self, request, id):
         faqcatsubcat2 = FaqCatSubcat2.objects.get(pk=id)
         return render(request, self.template_name, {'faqcatsubcat2': faqcatsubcat2})
+
+class PricingListView(ListView):
+    template_name = 'pricing.html'
+
+    def get(self, request):
+        pricingbg = PricingBG.objects.all()
+        pricingtitle = PricingTitle.objects.all()
+        pricingplan = PricingPlan.objects.all()
+        pricingplanfeature = PricingPlanFeature.objects.all()
+        return render(request, self.template_name, {
+            'pricingbg': pricingbg,
+            'pricingtitle': pricingtitle,
+            'pricingplan': pricingplan,
+            'pricingplanfeature': pricingplanfeature})

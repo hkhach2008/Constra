@@ -145,7 +145,7 @@
                             <li><a href="{% url 'team' %}">Our People</a></li>
                             <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
                             <li><a href="{% url 'faq' %}">Faq</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="{% url 'pricing' %}">Pricing</a></li>
                           </ul>
                       </li>
               
@@ -222,6 +222,7 @@
 {% block team_content %}{% endblock %}
 {% block testimonial_content %}{% endblock %}
 {% block faq_content %}{% endblock %}
+{% block pricing_content %}{% endblock %}
 
 <footer id="footer" class="footer bg-overlay">
     <div class="footer-main">

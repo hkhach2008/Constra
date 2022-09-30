@@ -565,18 +565,28 @@ class FaqCatTitle2(models.Model):
         verbose_name = 'FaqCatTitle2'
         verbose_name_plural = 'FaqCatTitles2'
 
-class FaqCat(models.Model):
-    name = models.CharField('FaqCat name', max_length=175)
+class FaqCat1(models.Model):
+    name = models.CharField('FaqCat1 name', max_length=175)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'FaqCat'
-        verbose_name_plural = 'FaqCats'    
+        verbose_name = 'FaqCat1'
+        verbose_name_plural = 'FaqCats1'
+
+class FaqCat2(models.Model):
+    name = models.CharField('FaqCat2 name', max_length=175)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'FaqCat2'
+        verbose_name_plural = 'FaqCats2'    
 
 class FaqCatSubcat1(models.Model):
-    faqcat = models.ForeignKey(FaqCat, related_name = 'subcat1', on_delete=models.CASCADE)
+    faqcat = models.ForeignKey(FaqCat1, related_name = 'subcat1', on_delete=models.CASCADE)
     about = models.TextField('FaqCatSubcat1')
 
     def __str__(self):
@@ -586,9 +596,8 @@ class FaqCatSubcat1(models.Model):
         verbose_name = 'FaqCatSubcat1'
         verbose_name_plural = 'FaqCatSubcats1'
 
-
 class FaqCatSubcat2(models.Model):
-    faqcat = models.ForeignKey(FaqCat, related_name = 'subcat2', on_delete=models.CASCADE)
+    faqcat = models.ForeignKey(FaqCat2, related_name = 'subcat2', on_delete=models.CASCADE)
     about = models.TextField('FaqCatSubcat1')
 
     def __str__(self):
@@ -597,3 +606,70 @@ class FaqCatSubcat2(models.Model):
     class Meta:
         verbose_name = 'FaqCatSubcat2'
         verbose_name_plural = 'FaqCatSubcats2'
+
+class FaqPostTitle(models.Model):
+    title = models.CharField('FaqPostTitle title', max_length=50)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'FaqPostTitle'
+        verbose_name_plural = 'FaqPostTitles'
+
+class FaqPost(models.Model):
+    about = models.TextField('FaqPost about')
+    img = models.ImageField('FaqPost image', upload_to='media')
+
+    def __str__(self):
+        return self.about
+
+    class Meta:
+        verbose_name = 'FaqPost'
+        verbose_name_plural = 'FaqPosts'
+
+class PricingBG(models.Model):
+    name1 = models.CharField('PricingBG name1', max_length=50, blank=True)
+    name2 = models.CharField('PricingBG name2', max_length=50)
+    img = models.ImageField('PricingBG image', upload_to='media', blank=True, null=True)
+
+    def __str__(self):
+        return self.name2
+
+    class Meta:
+        verbose_name = 'PricingBG'
+        verbose_name_plural = 'PricingBGs'
+
+class PricingTitle(models.Model):
+    title1 = models.CharField('PricingTitle title1', max_length=50)
+    title2 = models.CharField('PricingTitle title2', max_length=50)
+    
+    def __str__(self):
+        return self.title1
+
+    class Meta:
+        verbose_name = 'PricingTitle'
+        verbose_name_plural = 'PricingTitles'
+
+class PricingPlan(models.Model):
+    title = models.CharField('PricingPlan title', max_length=50)
+    price = models.FloatField('PricingPlan price')
+    date = models.CharField('PricingPlan date', max_length=50)
+    
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'PricingPlan'
+        verbose_name_plural = 'PricingPlans'
+
+class PricingPlanFeature(models.Model):
+    pricingplan = models.ForeignKey(PricingPlan, related_name='subcateg', on_delete=models.CASCADE)
+    features = models.TextField('PricingPlanFeatures features')
+
+    def __str__(self):
+        return self.features
+
+    class Meta:
+        verbose_name = 'PricingPlanFeature'
+        verbose_name_plural = 'PricingPlanFeatures'

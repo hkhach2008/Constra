@@ -32,144 +32,134 @@
   <div class="container">
 
     <div class="row">
-      {% for i in faqcattitle1 %}
       <div class="col-lg-8">
-        <h3 class="border-title border-left mar-t0">{{ i.title }}</h3>
-      {% endfor %}
-      
-      {% for i in faqcat %}
-        <div class="accordion accordion-group accordion-classic" id="construction-accordion">
-          {% for j in i.subcat1.all %}
-            {% if forloop.counter0 == 0 %}
-            <div class="card">
-              <div class="card-header p-0 bg-transparent" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    {{ i.name }}
-                  </button>
-                </h2>
-              </div>
-              
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                data-parent="#construction-accordion">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidata
-                </div>
-              </div>
-            </div>
-            {% else %}
-            <div class="card">
-              <div class="card-header p-0 bg-transparent" id="headingTwo">
-                <h2 class="mb-0">
-                  <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse"
-                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    {{ i.name }}
-                  </button>
-                </h2>
-              </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#construction-accordion">
-                <div class="card-body">
-                  Anemi nim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com modo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupid henderit in voluptate velit esse cillu oris nisi ut aliquip ex ea com
-                  matat.
-                </div>
-              </div>
-            </div>
-            {% endif %}
-          {% endfor %}
+        {% for i in faqcattitle1 %}
+        <div>
+          <h3 class="border-title border-left mar-t0">{{ i.title }}</h3>
         </div>
+        {% endfor %}
+
+        {% for i in faqcat1 %}
+        <div class="accordion accordion-group accordion-classic" id="construction-accordion">
+          {% if forloop.counter0 == 0 %}
+          <div class="card">
+            <div class="card-header p-0 bg-transparent" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  {{ i.name }}
+                </button>
+              </h2>
+            </div>
+            {% for j in i.subcat1.all %}
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+              data-parent="#construction-accordion">
+              <div class="card-body">
+                {{ j.about }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="card">
+            <div class="card-header p-0 bg-transparent" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse"
+                  data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  {{ i.name }}
+                </button>
+              </h2>
+            </div>
+            {% for j in i.subcat1.all %}
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#construction-accordion">
+              <div class="card-body">
+                {{ j.about }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
         <!--/ Accordion end -->
 
         <div class="gap-40"></div>
-        
+
         {% for i in faqcattitle2 %}
+        <div>
           <h3 class="border-title border-left">{{ i.title }}</h3>
+        </div>
         {% endfor %}
 
+        {% for i in faqcat2 %}
         <div class="accordion accordion-group accordion-classic" id="safety-accordion">
+          {% if forloop.counter0 == 0 %}
           <div class="card">
             <div class="card-header p-0 bg-transparent" id="headingFour">
               <h2 class="mb-0">
                 <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour"
                   aria-expanded="true" aria-controls="collapseFour">
-                  cjiuvb
+                  {{ i.name }}
                 </button>
               </h2>
             </div>
-
+            {% for j in i.subcat2.all %}
             <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
               data-parent="#safety-accordion">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidata
+                {{ j.about }}
               </div>
             </div>
+            {% endfor %}
           </div>
+          {% else %}
           <div class="card">
             <div class="card-header p-0 bg-transparent" id="headingFive">
               <h2 class="mb-0">
                 <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse"
                   data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                  efuvbiufbe
+                  {{ i.name }}
                 </button>
               </h2>
             </div>
+            {% for j in i.subcat2.all %}
             <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#safety-accordion">
               <div class="card-body">
-                Anemi nim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com modo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupid henderit in voluptate velit esse cillu oris nisi ut aliquip ex ea com
-                matat.
+                {{ j.about }}
               </div>
             </div>
+            {% endfor %}
           </div>
+          {% endif %}
         </div>
+        {% endfor %}
         <!--/ Accordion end -->
+
       </div><!-- Col end -->
-      {% endfor %}
 
       <div class="col-lg-4 mt-5 mt-lg-0">
 
         <div class="sidebar sidebar-right">
           <div class="widget recent-posts">
-            <h3 class="widget-title">Recent Posts</h3>
+            {% for i in faqposttitle %}
+            <div>
+              <h3 class="widget-title">{{ i.title }}</h3>
+            </div>
+            {% endfor %}
+
             <ul class="list-unstyled">
+              {% for i in faqpost %}
               <li class="d-flex align-items-center">
                 <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="news-image" src="images/news/news1.jpg"></a>
+                  <a href="#"><img loading="lazy" alt="news-image" src="{{ i.img.url }}"></a>
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">
-                    <a href="#">We Just Completes $17.6 Million Medical Clinic In Mid-missouri</a>
+                    <a href="#">{{ i.about }}</a>
                   </h4>
                 </div>
               </li><!-- 1st post end-->
-
-              <li class="d-flex align-items-center">
-                <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="news-img" src="images/news/news2.jpg"></a>
-                </div>
-                <div class="post-info">
-                  <h4 class="entry-title">
-                    <a href="#">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
-                  </h4>
-                </div>
-              </li><!-- 2nd post end-->
-
-              <li class="d-flex align-items-center">
-                <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="news-img" src="images/news/news3.jpg"></a>
-                </div>
-                <div class="post-info">
-                  <h4 class="entry-title">
-                    <a href="#">Silicon Bench And Cornike Begin Construction Solar Facilities</a>
-                  </h4>
-                </div>
-              </li><!-- 3rd post end-->
-
+              {% endfor %}
             </ul>
 
           </div><!-- Recent post end -->
